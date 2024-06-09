@@ -1,8 +1,9 @@
-import { Options as MicromatchOptions } from 'micromatch';
+import { Options } from 'micromatch';
+
 declare class PluginManager {
     static cleanDir(sourceDir: string, targetDir?: string): void;
     static copyDistFolders(sourceDir: string, targetDir: string): void;
-    static moveFiles(sourceDir: string, targetDir: string, pattern?: string, matchOption?: MicromatchOptions): void;
+    static moveFiles(sourceDir: string, targetDir: string, pattern?: string, matchOption?: Options): void;
     static clearUnnecessaryFiles(targetDir: string, patterns: string[]): void;
     static clearEmptyDirs(directory: string): boolean;
     static removeDirs(dirs: string[]): void;
@@ -32,4 +33,7 @@ declare class PluginManager {
     private static copyRecursiveSync;
     private static getAllFiles;
 }
-export { PluginManager };
+
+declare const version: string;
+
+export { PluginManager, version };

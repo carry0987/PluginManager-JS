@@ -3,10 +3,11 @@ import replace from '@rollup/plugin-replace';
 import resolve from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
 import { dts } from 'rollup-plugin-dts';
+import del from 'rollup-plugin-delete';
 import { createRequire } from 'module';
 const pkg = createRequire(import.meta.url)('./package.json');
 
-const isDts = process.env.BUILD === 'dts';
+const isProduction = process.env.BUILD === 'production';
 const sourceFile = 'src/index.ts';
 
 // ESM build configuration
@@ -19,11 +20,6 @@ const esmConfig = {
             sourcemap: false
         }
     ],
-    external: {
-        'fs': 'fs',
-        'path': 'path',
-        'micromatch': 'micromatch'
-    },
     plugins: [
         resolve(),
         typescript(),
@@ -43,8 +39,9 @@ const dtsConfig = {
         format: 'es'
     },
     plugins: [
-        dts()
+        dts(),
+        del({ hook: 'buildEnd', targets: 'dist/dts' })
     ]
 };
 
-export default isDts ? dtsConfig : esmConfig;
+export default isProduction ? dtsConfig : esmConfig;

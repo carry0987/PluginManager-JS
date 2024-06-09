@@ -1,6 +1,6 @@
 {
   "name": "@carry0987/plugin-manager",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "The `PluginManager` class provides utility functions for managing file operations, including cleaning directories, copying distribution folders, moving files, clearing unnecessary files, and removing empty directories in a file system.",
   "type": "module",
   "module": "dist/index.esm.js",
@@ -43,6 +43,7 @@
     "glob": "^10.4.1",
     "micromatch": "^4.0.7",
     "rollup": "^4.18.0",
+    "rollup-plugin-delete": "^2.0.0",
     "rollup-plugin-dts": "^6.1.1",
     "tslib": "^2.6.3",
     "tsx": "^4.15.0",
