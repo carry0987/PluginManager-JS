@@ -6,6 +6,9 @@ class PluginManager {
     // Clean directories that match the condition
     static cleanDir(sourceDir: string, targetDir?: string): void {
         const dirs = PluginManager.findDestDirs(sourceDir, targetDir);
+        if (dirs.length === 0) {
+            return;
+        }
         dirs.forEach((dir) => {
             const fullPath = dir;
             PluginManager.removeDir(fullPath);
@@ -51,7 +54,6 @@ class PluginManager {
 
             if (fs.lstatSync(file).isFile()) {
                 fs.copyFileSync(file, destination);
-                // fs.unlinkSync(file);
             }
 
             console.log(`Moved: ${file} to ${destination}`);
