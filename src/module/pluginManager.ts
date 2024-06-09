@@ -174,9 +174,6 @@ class PluginManager {
         entries.forEach((entry) => {
             const fullPath = path.join(targetDir || sourceDir, entry.name);
             results.push(fullPath);
-            if (entry.isSymbolicLink()) {
-                // results.push(fullPath);
-            }
         });
 
         return results;
