@@ -126,7 +126,7 @@ class PluginManager {
                 }
             });
             // Remove now-empty directory
-            fs.rmdirSync(dirPath);
+            fs.rmSync(dirPath, { recursive: true });
         }
     }
 
