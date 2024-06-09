@@ -7,7 +7,6 @@ import del from 'rollup-plugin-delete';
 import { createRequire } from 'module';
 const pkg = createRequire(import.meta.url)('./package.json');
 
-const isProduction = process.env.BUILD === 'production';
 const sourceFile = 'src/index.ts';
 
 // ESM build configuration
@@ -44,4 +43,4 @@ const dtsConfig = {
     ]
 };
 
-export default isProduction ? dtsConfig : esmConfig;
+export default [esmConfig, dtsConfig];
