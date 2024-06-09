@@ -13,6 +13,9 @@
     "clean": "pnpm clean",
     "clean:node_modules": "pnpm clean node_modules"
   },
+  "publishConfig": {
+    "access": "public"
+  },
   "files": [
     "dist"
   ],
