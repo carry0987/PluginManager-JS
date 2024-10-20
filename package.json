@@ -1,6 +1,6 @@
 {
   "name": "@carry0987/plugin-manager",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "This class provides utility functions for managing file operations, including cleaning directories, copying distribution folders, moving files, clearing unnecessary files, and removing empty directories in a file system.",
   "type": "module",
   "main": "dist/index.js",
@@ -8,6 +8,7 @@
   "types": "dist/index.d.ts",
   "exports": {
     ".": {
+      "main": "./dist/index.js",
       "import": "./dist/index.js",
       "types": "./dist/index.d.ts"
     }
