@@ -30,6 +30,27 @@ const esmConfig: RollupOptions = {
     ]
 };
 
+// CommonJS build configuration
+const cjsConfig: RollupOptions = {
+    input: sourceFile,
+    output: [
+        {
+            file: pkg.main,
+            format: 'cjs',
+            sourcemap: false
+        }
+    ],
+    plugins: [
+        typescript(),
+        nodeResolve(),
+        replace({
+            preventAssignment: true,
+            __version__: pkg.version
+        }),
+        commonjs()
+    ]
+};
+
 // TypeScript type definition configuration
 const dtsConfig: RollupOptions = {
     input: sourceFile,
@@ -42,4 +63,4 @@ const dtsConfig: RollupOptions = {
     ]
 };
 
-export default [esmConfig, dtsConfig];
+export default [esmConfig, cjsConfig, dtsConfig];

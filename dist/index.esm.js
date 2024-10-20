@@ -4318,6 +4318,6 @@ class PluginManager {
     }
 }
 
-const version = '1.0.4';
+const version = '1.1.0';
 
 export { PluginManager, version };
