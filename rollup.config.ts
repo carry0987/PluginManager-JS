@@ -1,16 +1,16 @@
+import { RollupOptions } from 'rollup';
 import typescript from '@rollup/plugin-typescript';
 import replace from '@rollup/plugin-replace';
-import resolve from '@rollup/plugin-node-resolve';
+import nodeResolve from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
 import { dts } from 'rollup-plugin-dts';
-import del from 'rollup-plugin-delete';
 import { createRequire } from 'module';
-const pkg = createRequire(import.meta.url)('./package.json');
 
+const pkg = createRequire(import.meta.url)('./package.json');
 const sourceFile = 'src/index.ts';
 
 // ESM build configuration
-const esmConfig = {
+const esmConfig: RollupOptions = {
     input: sourceFile,
     output: [
         {
@@ -20,8 +20,8 @@ const esmConfig = {
         }
     ],
     plugins: [
-        resolve(),
         typescript(),
+        nodeResolve(),
         replace({
             preventAssignment: true,
             __version__: pkg.version
@@ -31,15 +31,14 @@ const esmConfig = {
 };
 
 // TypeScript type definition configuration
-const dtsConfig = {
+const dtsConfig: RollupOptions = {
     input: sourceFile,
     output: {
         file: pkg.types,
         format: 'es'
     },
     plugins: [
-        dts(),
-        del({ hook: 'buildEnd', targets: 'dist/dts' })
+        dts()
     ]
 };
 

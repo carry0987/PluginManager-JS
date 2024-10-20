@@ -24,10 +24,7 @@ class PluginManager {
             const normalizedDir = dir.split(`${sourceDir}/.pnpm/`).pop()?.split('/node_modules/').pop();
             if (normalizedDir) {
                 const fullSourcePath = path.join(sourceDir, normalizedDir);
-                let destPath = fullSourcePath.replace(
-                    'node_modules',
-                    targetDir
-                );
+                let destPath = fullSourcePath.replace('node_modules', targetDir);
                 destPath = destPath.replace('/dist', '');
                 fs.mkdirSync(destPath, { recursive: true });
                 PluginManager.copyRecursiveSync(fullSourcePath, destPath);
@@ -113,7 +110,7 @@ class PluginManager {
 
     /**
      * Recursively remove directories using fs.
-     * @param dirPath 
+     * @param dirPath
      */
     private static removeDir(dirPath: string): void {
         if (fs.existsSync(dirPath)) {
@@ -137,10 +134,7 @@ class PluginManager {
      * @param dir The directory to search.
      * @param getRealPath Whether to get the real path of the directory.
      */
-    private static findDistDirs(
-        dir: string,
-        getRealPath: boolean = false
-    ): string[] {
+    private static findDistDirs(dir: string, getRealPath: boolean = false): string[] {
         const result: string[] = [];
         const items = fs.readdirSync(dir, { withFileTypes: true });
 
@@ -149,9 +143,7 @@ class PluginManager {
 
             if (item.isDirectory()) {
                 if (item.name === 'dist') {
-                    result.push(
-                        !getRealPath ? fullPath : fs.realpathSync(fullPath)
-                    );
+                    result.push(!getRealPath ? fullPath : fs.realpathSync(fullPath));
                 } else {
                     result.push(...PluginManager.findDistDirs(fullPath));
                 }
@@ -166,10 +158,7 @@ class PluginManager {
      * @param targetDir The target directory.
      * @returns An array of file paths.
      */
-    private static findDestDirs(
-        sourceDir: string,
-        targetDir?: string
-    ): string[] {
+    private static findDestDirs(sourceDir: string, targetDir?: string): string[] {
         const results: string[] = [];
         const entries = fs.readdirSync(sourceDir, { withFileTypes: true });
 
@@ -209,7 +198,12 @@ class PluginManager {
         }
     }
 
-    private static getAllFiles(dir: string, pattern: string, fileList: string[] = [], matchOption?: MicromatchOptions): string[] {
+    private static getAllFiles(
+        dir: string,
+        pattern: string,
+        fileList: string[] = [],
+        matchOption?: MicromatchOptions
+    ): string[] {
         const files = fs.readdirSync(dir);
         files.forEach((file) => {
             const fullPath = path.join(dir, file);

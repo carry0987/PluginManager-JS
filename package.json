@@ -1,16 +1,23 @@
 {
   "name": "@carry0987/plugin-manager",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "This class provides utility functions for managing file operations, including cleaning directories, copying distribution folders, moving files, clearing unnecessary files, and removing empty directories in a file system.",
   "type": "module",
   "main": "dist/index.js",
   "module": "dist/index.js",
   "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
   "scripts": {
-    "test": "vitest run",
-    "test:watch": "vitest",
+    "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
     "start": "rollup --config rollup.config.ts --configPlugin typescript",
     "build": "rollup --config rollup.config.ts --configPlugin typescript --environment BUILD:production",
+    "test": "vitest run",
+    "test:watch": "vitest",
     "clean": "pnpm clean",
     "clean:node_modules": "pnpm clean node_modules"
   },
@@ -35,19 +42,20 @@
   },
   "homepage": "https://github.com/carry0987/PluginManager-JS#readme",
   "devDependencies": {
-    "@rollup/plugin-commonjs": "^25.0.8",
-    "@rollup/plugin-node-resolve": "^15.2.3",
-    "@rollup/plugin-replace": "^5.0.7",
-    "@rollup/plugin-typescript": "^11.1.6",
-    "@types/micromatch": "^4.0.7",
-    "@types/node": "^20.14.2",
-    "glob": "^10.4.1",
-    "micromatch": "^4.0.7",
-    "rollup": "^4.18.0",
-    "rollup-plugin-delete": "^2.0.0",
+    "@rollup/plugin-commonjs": "^28.0.1",
+    "@rollup/plugin-node-resolve": "^15.3.0",
+    "@rollup/plugin-replace": "^6.0.1",
+    "@rollup/plugin-typescript": "^12.1.1",
+    "@types/micromatch": "^4.0.9",
+    "@types/node": "^22.7.7",
+    "glob": "^11.0.0",
+    "micromatch": "^4.0.8",
+    "prettier": "^3.3.3",
+    "rollup": "^4.24.0",
     "rollup-plugin-dts": "^6.1.1",
-    "tslib": "^2.6.3",
-    "tsx": "^4.15.0",
-    "vitest": "^1.6.0"
+    "rollup-plugin-tsconfig-paths": "^1.5.2",
+    "tslib": "^2.8.0",
+    "tsx": "^4.19.1",
+    "vitest": "^2.1.3"
   }
 }

@@ -3,14 +3,19 @@
         "module": "ESNext",
         "target": "ESNext",
         "moduleResolution": "Node",
+        "esModuleInterop": true,
         "importHelpers": true,
         "strict": true,
-        "esModuleInterop": true,
-        "declaration": true,
-        "outDir": "./dist",
-        "declarationDir": "dist/dts/",
-        "forceConsistentCasingInFileNames": true
+        "forceConsistentCasingInFileNames": true,
+        "outDir": "dist",
+        "paths": {
+            "@/*": ["./src/*"]
+        }
     },
-    "include": ["src/**/*.ts"],
-    "exclude": ["node_modules", "**/__tests__/*"]
+    "include": [
+        "src/**/*",
+        "test/**/*",
+        "rollup.config.ts"
+    ],
+    "exclude": ["node_modules", "dist", "**/__snapshots__/**/*"]
 }
