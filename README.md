@@ -5,13 +5,7 @@
 The `@carry0987/plugin-manager` library provides utility functions for preparing front-end assets from local directories and installed packages. It focuses on declarative file selection instead of scanning every `dist` folder under `node_modules`.
 
 ## Installation
-You can install the library via npm:
-
-```sh
-npm i @carry0987/plugin-manager
-```
-
-Or via pnpm:
+You can install the library via:
 
 ```sh
 pnpm add @carry0987/plugin-manager
