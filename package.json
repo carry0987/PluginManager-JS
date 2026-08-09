@@ -1,0 +1,58 @@
+{
+  "name": "@carry0987/plugin-manager",
+  "version": "2.0.0",
+  "description": "This class provides utility functions for managing file operations, including cleaning directories, copying distribution folders, moving files, clearing unnecessary files, and removing empty directories in a file system.",
+  "type": "module",
+  "main": "dist/index.cjs",
+  "module": "dist/index.esm.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "main": "./dist/index.cjs",
+      "import": "./dist/index.esm.js",
+      "require": "./dist/index.cjs",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "scripts": {
+    "build": "rolldown -c",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "lint": "biome check --write .",
+    "clean": "pnpm clean",
+    "clean:node_modules": "pnpm clean node_modules"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "files": [
+    "dist"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/carry0987/PluginManager-JS.git"
+  },
+  "keywords": [
+    "plugin",
+    "plugin-manager"
+  ],
+  "author": "carry0987",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/carry0987/PluginManager-JS/issues"
+  },
+  "homepage": "https://github.com/carry0987/PluginManager-JS#readme",
+  "dependencies": {
+    "@types/micromatch": "^4.0.10",
+    "micromatch": "^4.0.8"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^2.5.7",
+    "@types/node": "^26.2.0",
+    "glob": "^13.0.6",
+    "rolldown": "^1.2.3",
+    "rolldown-plugin-dts": "^0.28.0",
+    "typescript": "^7.0.2",
+    "vitest": "^4.1.10"
+  }
+}
