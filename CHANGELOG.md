@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.0.3](https://github.com/carry0987/PluginManager-JS/compare/v2.0.2...v2.0.3) (2026-08-09)
+
+
+### Bug Fixes
+
+* Add description for public methods ([99dcf23](https://github.com/carry0987/PluginManager-JS/commit/99dcf23fe8a40e4bcaea0a9bc3867b4c16a7a32f))
+
 ## [2.0.2](https://github.com/carry0987/PluginManager-JS/compare/v2.0.1...v2.0.2) (2026-08-09)
 
 
