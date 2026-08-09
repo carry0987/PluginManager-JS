@@ -1,6 +1,6 @@
 {
   "name": "@carry0987/plugin-manager",
-  "version": "2.0.2",
+  "version": "2.0.3",
   "description": "This class provides utility functions for managing file operations, including cleaning directories, copying distribution folders, moving files, clearing unnecessary files, and removing empty directories in a file system.",
   "type": "module",
   "main": "dist/index.cjs",
