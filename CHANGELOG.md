@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.0.4](https://github.com/carry0987/PluginManager-JS/compare/v2.0.3...v2.0.4) (2026-08-15)
+
+
+### Bug Fixes
+
+* **deps:** Update packages ([0d2b049](https://github.com/carry0987/PluginManager-JS/commit/0d2b04926da9dcf161747c5a10a876ced0ec3451))
+
 ## [2.0.3](https://github.com/carry0987/PluginManager-JS/compare/v2.0.2...v2.0.3) (2026-08-09)
 
 
