@@ -41,7 +41,7 @@ const config: Config = {
                     sidebarPath: './sidebars.ts',
                     showLastUpdateAuthor: true,
                     showLastUpdateTime: true,
-                    editUrl: 'https://github.com/carry0987/PluginManager-JS/tree/main/gh-pages/',
+                    editUrl: 'https://github.com/carry0987/PluginManager-JS/tree/gh-pages/',
                 },
                 blog: false,
                 theme: {
