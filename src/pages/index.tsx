@@ -23,27 +23,58 @@ PluginManager.copyFiles('src/assets', 'public/vendor', {
     exclude: ['**/*.map'],
 });`;
 
+function getLineText(line: ReadonlyArray<{ content: string }>) {
+    return line.map((token) => token.content).join('');
+}
+
 function WorkflowCodeBlock() {
     return (
         <Highlight code={workflowCode} language="ts" theme={themes.nightOwl}>
-            {({ className, style, tokens, getLineProps, getTokenProps }) => (
-                <pre className={clsx(className, styles.previewCode)} style={{ ...style, background: 'transparent' }}>
-                    {tokens.map((line, lineIndex) => {
-                        const lineProps = getLineProps({ line });
+            {({ className, style, tokens, getLineProps, getTokenProps }) => {
+                let lineOffset = 0;
+                let lineNumber = 1;
 
-                        return (
-                            <div key={lineIndex} {...lineProps} className={styles.codeLine}>
-                                <span className={styles.lineNumber}>{lineIndex + 1}</span>
-                                <span className={styles.lineContent}>
-                                    {line.map((token, tokenIndex) => (
-                                        <span key={tokenIndex} {...getTokenProps({ token })} />
-                                    ))}
-                                </span>
-                            </div>
-                        );
-                    })}
-                </pre>
-            )}
+                return (
+                    <pre
+                        className={clsx(className, styles.previewCode)}
+                        style={{ ...style, background: 'transparent' }}>
+                        {tokens.map((line) => {
+                            const lineText = getLineText(line);
+                            const currentLineNumber = lineNumber;
+                            const currentLineOffset = lineOffset;
+                            lineNumber += 1;
+                            lineOffset += lineText.length + 1;
+                            const lineProps = getLineProps({ line });
+
+                            return (
+                                <div
+                                    key={`${currentLineOffset}:${lineText}`}
+                                    {...lineProps}
+                                    className={styles.codeLine}>
+                                    <span className={styles.lineNumber}>{currentLineNumber}</span>
+                                    <span className={styles.lineContent}>
+                                        {(() => {
+                                            let tokenOffset = currentLineOffset;
+
+                                            return line.map((token) => {
+                                                const currentTokenOffset = tokenOffset;
+                                                tokenOffset += token.content.length;
+
+                                                return (
+                                                    <span
+                                                        key={`${currentTokenOffset}:${token.types.join('.')}:${token.content}`}
+                                                        {...getTokenProps({ token })}
+                                                    />
+                                                );
+                                            });
+                                        })()}
+                                    </span>
+                                </div>
+                            );
+                        })}
+                    </pre>
+                );
+            }}
         </Highlight>
     );
 }
