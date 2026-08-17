@@ -65,6 +65,43 @@ h6 {
     border-bottom: 1px solid rgba(27, 51, 39, 0.08);
 }
 
+@media screen and (max-width: 996px) {
+    .navbar {
+        -webkit-backdrop-filter: none;
+        backdrop-filter: none;
+    }
+
+    .navbar-sidebar,
+    .navbar-sidebar__brand,
+    .navbar-sidebar__items {
+        background: #f6f4ec;
+    }
+
+    .navbar-sidebar {
+        border-right: 1px solid rgba(27, 51, 39, 0.08);
+        box-shadow: 0 24px 48px rgba(21, 43, 33, 0.18);
+    }
+
+    .navbar-sidebar__backdrop {
+        background: rgba(17, 27, 22, 0.32);
+    }
+}
+
+[data-theme="dark"] .navbar-sidebar,
+[data-theme="dark"] .navbar-sidebar__brand,
+[data-theme="dark"] .navbar-sidebar__items {
+    background: #0d1411;
+}
+
+[data-theme="dark"] .navbar-sidebar {
+    border-right-color: rgba(140, 255, 197, 0.1);
+    box-shadow: 0 24px 48px rgba(0, 0, 0, 0.36);
+}
+
+[data-theme="dark"] .navbar-sidebar__backdrop {
+    background: rgba(0, 0, 0, 0.48);
+}
+
 .button--primary {
     border: none;
     box-shadow: 0 16px 30px rgba(31, 158, 90, 0.25);

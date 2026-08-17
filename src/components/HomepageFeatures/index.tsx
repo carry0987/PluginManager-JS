@@ -62,7 +62,7 @@ export default function HomepageFeatures(): ReactNode {
                     <p className={styles.sectionLabel}>Core Capabilities</p>
                     <Heading as="h2">Turn repetitive asset copying into reviewable rules</Heading>
                 </div>
-                <div className="row">
+                <div className={clsx('row', styles.featureRow)}>
                     {FeatureList.map((props) => (
                         <Feature key={props.title} {...props} />
                     ))}

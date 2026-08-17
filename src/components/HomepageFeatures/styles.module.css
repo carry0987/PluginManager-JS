@@ -19,6 +19,10 @@
     text-transform: uppercase;
 }
 
+.featureRow {
+    row-gap: 1.25rem;
+}
+
 .card {
     background: rgba(255, 255, 255, 0.82);
     border: 1px solid rgba(27, 51, 39, 0.08);
