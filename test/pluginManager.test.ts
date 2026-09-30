@@ -1,7 +1,7 @@
 import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
-import { afterEach, beforeEach, describe, expect, it } from 'vitest';
+import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { PluginManager } from '../src/index';
 
 describe('PluginManager', () => {
@@ -22,6 +22,7 @@ describe('PluginManager', () => {
     });
 
     afterEach(() => {
+        vi.restoreAllMocks();
         fs.rmSync(tempDir, { recursive: true, force: true });
     });
 
@@ -82,6 +83,23 @@ describe('PluginManager', () => {
         expect(fs.existsSync(path.join(targetDir, 'example-pkg', 'icons', 'logo.svg'))).toBe(true);
         expect(fs.existsSync(path.join(targetDir, 'example-pkg', 'ignore.js'))).toBe(false);
         expect(fs.existsSync(path.join(targetDir, '@scope', 'example-pkg', 'scoped.js'))).toBe(true);
+    });
+
+    it('should log copied package paths relative to the current working directory', () => {
+        const packageFile = path.join(nodeModulesDir, 'example-pkg', 'dist', 'example.js');
+        const destination = path.join(targetDir, 'example-pkg', 'example.js');
+        const logSpy = vi.spyOn(console, 'log').mockImplementation(() => undefined);
+
+        fs.mkdirSync(path.dirname(packageFile), { recursive: true });
+        fs.writeFileSync(packageFile, 'content');
+
+        PluginManager.copyPackages(nodeModulesDir, targetDir, [{ name: 'example-pkg', include: ['**/*.js'] }], {
+            verbose: true
+        });
+
+        expect(logSpy).toHaveBeenCalledWith(
+            `Copied: ${path.relative(process.cwd(), fs.realpathSync(packageFile))} to ${path.relative(process.cwd(), destination)}`
+        );
     });
 
     it('should throw when package rules would overwrite the same destination', () => {

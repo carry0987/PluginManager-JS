@@ -113,7 +113,10 @@ class PluginManager {
                 fs.mkdirSync(path.dirname(destination), { recursive: true });
                 fs.copyFileSync(file.absolutePath, destination);
                 copiedDestinations.add(destination);
-                PluginManager.log(`Copied: ${file.absolutePath} to ${destination}`, options.verbose);
+                PluginManager.log(
+                    `Copied: ${path.relative(process.cwd(), file.absolutePath)} to ${path.relative(process.cwd(), destination)}`,
+                    options.verbose
+                );
             }
         }
     }
@@ -153,7 +156,10 @@ class PluginManager {
             const destination = path.join(targetDir, file.relativePath);
             fs.mkdirSync(path.dirname(destination), { recursive: true });
             fs.copyFileSync(file.absolutePath, destination);
-            PluginManager.log(`Copied: ${file.absolutePath} to ${destination}`, options.verbose);
+            PluginManager.log(
+                `Copied: ${path.relative(process.cwd(), file.absolutePath)} to ${path.relative(process.cwd(), destination)}`,
+                options.verbose
+            );
         }
     }
 
