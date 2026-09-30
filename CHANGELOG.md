@@ -1,5 +1,13 @@
 # Changelog
 
+## [2.0.5](https://github.com/carry0987/PluginManager-JS/compare/v2.0.4...v2.0.5) (2026-09-30)
+
+
+### Bug Fixes
+
+* **ci:** update pnpm and Node versions ([bb4063f](https://github.com/carry0987/PluginManager-JS/commit/bb4063f7a1d8ad8c13fe8d73a87fa66cbc891963))
+* log copied paths relative to working directory ([e940316](https://github.com/carry0987/PluginManager-JS/commit/e94031687efd8b98210fde92e9b5994c8ad97521))
+
 ## [2.0.4](https://github.com/carry0987/PluginManager-JS/compare/v2.0.3...v2.0.4) (2026-08-15)
 
 
